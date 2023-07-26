@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.toast-success {
+  background-color: #5695bf !important;
+  box-shadow: 0 0 12px #5184a5 !important;
+  color: black !important;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.toast-message {
+  font-size: small;
+}
+
+@media screen and (max-width: 480px) {
+  .toast-success {
+    width: 70vw !important;
+    height: 10vh !important;
+  }
+}

@@ -1,0 +1,39 @@
+<section class="about" *ngIf="outlet.isActivated === false">
+    <div *ngIf="!loader; else skeletonTemplate">
+        <h3>DEMO APP</h3>
+        <p>Name: {{about?.name}}</p>
+        <p>Domain: {{about?.domain}}</p>
+        <p>Email: {{about?.email}}</p>
+        <button mat-raised-button [routerLink]="['contact-us']">Contact Us</button>
+    </div>
+    <ng-template #skeletonTemplate class="skeleton">
+        <div>
+            <ngx-skeleton-loader appearance="line" [theme]="{
+            width: '90px',
+            height: '25px',
+            'margin-bottom': '20px',
+            'margin-top': '10px'
+          }"></ngx-skeleton-loader>
+        </div>
+        <div>
+            <ngx-skeleton-loader appearance="line" [theme]="{
+                width: '105px'
+              }"></ngx-skeleton-loader>
+        </div>
+        <div>
+            <ngx-skeleton-loader appearance="line" [theme]="{
+                width: '106px'
+              }"></ngx-skeleton-loader>
+        </div>
+        <div>
+            <ngx-skeleton-loader appearance="line" [theme]="{
+                width: '200px'
+              }"></ngx-skeleton-loader>
+        </div>
+        <ngx-skeleton-loader appearance="line" [theme]="{
+            width: '101px',
+            height: '36px'
+          }"></ngx-skeleton-loader>
+    </ng-template>
+</section>
+<router-outlet #outlet="outlet"></router-outlet>

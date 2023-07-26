@@ -1,0 +1,52 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" (click)="toggle()" *ngIf="isHandSet">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>DEMO APP</span>
+    <button mat-icon-button class="example-icon" (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-sidenav-container color="primary" *ngIf="isHandSet">
+    <mat-sidenav [(opened)]="isOpened" mode="side">
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['home']" routerLinkActive="active-link"><mat-icon>home</mat-icon></a>
+            <a mat-list-item [routerLink]="['about']" routerLinkActive="active-link"><mat-icon>person</mat-icon></a>
+            <a mat-list-item [routerLink]="['counter']"
+                routerLinkActive="active-link"><mat-icon>counter_1</mat-icon></a>
+            <a mat-list-item [routerLink]="['bar']"><mat-icon>insights</mat-icon></a>
+            <mat-nav-list *ngIf="displayChart" class="toggle-chart">
+                <a mat-list-item [routerLink]="['bar']" routerLinkActive="active-link">bar_chart</a>
+                <a mat-list-item [routerLink]="['pie']"
+                    routerLinkActive="active-link"><mat-icon>pie_chart</mat-icon></a>
+                <a mat-list-item [routerLink]="['line']"
+                    routerLinkActive=" active-link"><mat-icon>show_chart</mat-icon></a>
+            </mat-nav-list>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-drawer-container class="example-container" *ngIf="!isHandSet">
+    <mat-drawer mode="side" opened>
+        <mat-nav-list>
+            <a mat-list-item type="button" [routerLink]="['home']" routerLinkActive="active-link">Home</a>
+            <a mat-list-item type="button" [routerLink]="['about']" routerLinkActive="active-link">About</a>
+            <a mat-list-item [routerLink]="['counter']" routerLinkActive="active-link">Counter</a>
+            <a mat-list-item type="button" [routerLink]="['bar']" (click)="toggleChart()">Graphs<mat-icon
+                    class="dropdown-arrow" *ngIf="!displayChart">arrow_right</mat-icon><mat-icon class="dropdown-arrow"                    *ngIf="displayChart">arrow_drop_down</mat-icon></a>
+            <mat-nav-list *ngIf="displayChart" class="toggle-chart">
+                <a mat-list-item type="button" [routerLink]="['bar']" routerLinkActive="active-link">Bar Graph</a>
+                <a mat-list-item type="button" [routerLink]="['pie']" routerLinkActive="active-link">Pie Graph</a>
+                <a mat-list-item type="button" [routerLink]="['line']" routerLinkActive=" active-link">Line Graph</a>
+            </mat-nav-list>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

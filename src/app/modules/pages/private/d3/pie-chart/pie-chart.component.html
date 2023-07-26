@@ -1,0 +1,7 @@
+<div [ngClass]="loader? 'skeleton':'container'">
+    <figure id="pieChart"></figure>
+</div>
+
+<div *ngIf="loader">
+    <app-graph-skeleton></app-graph-skeleton>
+</div>

@@ -1,0 +1,71 @@
+mat-toolbar {
+  background-color: #d0d8de;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-sidenav-container {
+  height: 100vh;
+  mat-sidenav {
+    width: 20vw;
+    margin: 0;
+    padding-top: 3rem;
+    text-align: center;
+    background-color: #5695bf;
+    border: none;
+    position: fixed;
+    a {
+      font-size: 1em;
+    }
+    .active-link {
+      background-color: #5184a5;
+      color: rgb(219, 230, 236);
+    }
+    .toggle-chart {
+      margin-top: -8px;
+      a {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+.mat-drawer-container {
+  min-height: 100vh;
+  font-size: 1em;
+  mat-drawer {
+    width: 15vw;
+    margin: 0;
+    padding-top: 3.5rem;
+    text-align: center;
+    background-color: #5695bf;
+    border: none;
+    position: fixed;
+    .active-link {
+      background-color: #5184a5;
+      color: rgb(219, 230, 236);
+    }
+    .toggle-chart {
+      margin-top: -8px;
+      a {
+        font-size: 0.85rem;
+      }
+    }
+  }
+  .mat-drawer-content {
+    margin-top: 64px;
+  }
+}
+
+.dropdown-arrow {
+  margin-left: 60%;
+}
+
+.toggle-chart {
+  a {
+    padding-left: 1rem;
+  }
+}

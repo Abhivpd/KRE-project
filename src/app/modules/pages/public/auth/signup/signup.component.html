@@ -1,0 +1,74 @@
+<div class="signup-form">
+
+
+    <section class="side-image">
+
+        <div class="side-heading">
+            <h1 class=>ELTP AIMS </h1>
+            <h2 class="side-sub-heading">Please sign up here</h2>
+        </div>
+    </section>
+
+    <section class="signUp">
+        <mat-card class="mat-card">
+            <mat-card-title>SIGNUP</mat-card-title>
+            <mat-card-content class="mat-card-content">
+                <form class="content" [formGroup]="signupForm" (ngSubmit)="onSignUp()" #form>
+                    <mat-form-field>
+                        <mat-label> Email</mat-label>
+                        <input matInput type="email" placeholder="Enter your Email" formControlName="email">
+                        <mat-error
+                            *ngIf="signupForm.controls['email'].errors?.['required']  && [(!signupForm.controls['email'].touched || signupForm.controls['email'].dirty) || (signupForm.controls['email'].touched)]; else other">Email
+                            is required</mat-error>
+                        <ng-template #other>
+                            <mat-error
+                                *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].touched || signupForm.controls['email'])">Please
+                                enter valid email address</mat-error>
+                        </ng-template>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" placeholder="First name" formControlName="firstName">
+                        <mat-error *ngIf="signupForm.get('firstName')?.hasError('required')">
+                            First name is required
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" placeholder="Last name" formControlName="lastName">
+                        <mat-error *ngIf="signupForm.get('lastName')?.hasError('required')">
+                            Last name is required
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput type="text" placeholder="Phone number" formControlName="PhoneNumber">
+                        <mat-error
+                            *ngIf="signupForm.controls['PhoneNumber'].errors?.['required']  && (!signupForm.controls['PhoneNumber'].touched || signupForm.controls['PhoneNumber'].touched); else phoneNumber">Phone
+                            number
+                            is required</mat-error>
+                        <ng-template #phoneNumber>
+                            <mat-error
+                                *ngIf="signupForm.controls['PhoneNumber'].invalid && (signupForm.controls['PhoneNumber'].touched || signupForm.controls['PhoneNumber'].dirty)">Please
+                                enter valid phone number</mat-error>
+                        </ng-template>
+                    </mat-form-field>
+                    <mat-checkbox formControlName="terms" #terms>I agree to the terms and conditions</mat-checkbox>
+                    <mat-error class="terms"
+                        *ngIf="!terms.checked && (signupForm.controls['terms'].dirty || isSubmitted) ">Accepting
+                        terms
+                        and conditions is
+                        required
+                    </mat-error>
+                    <mat-card-actions class="mat-card-actions">
+                        <div class="submit">
+                            <button mat-raised-button color="primary" type="submit">Submit</button>
+                            <a class="btn" [routerLink]="['']">Go to log in</a>
+                        </div>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </section>
+</div>
+<router-outlet></router-outlet>

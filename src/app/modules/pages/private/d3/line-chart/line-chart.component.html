@@ -1,0 +1,7 @@
+<div [ngClass]="loader? 'skeleton':'container'">
+    <div id="lineGraph"></div>
+</div>
+
+<div *ngIf="loader">
+    <app-graph-skeleton></app-graph-skeleton>
+</div>

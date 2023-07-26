@@ -1,0 +1,62 @@
+<div class="login-form" *ngIf="outlet.isActivated === false">
+
+
+    <section class="side-image" *ngIf="!isHandSet">
+        <div class="side-heading">
+            <h1 class=>DEMO APP</h1>
+            <h2 class="side-sub-heading">Welcome to the Login Page! </h2>
+        </div>
+    </section>
+
+    <section *ngIf="isHandSet">
+        <h2>ELTP AIMS</h2>
+    </section>
+
+    <section class="login-card">
+        <mat-card>
+
+            <mat-card-title>LOGIN</mat-card-title>
+            <mat-card-content>
+                <form [formGroup]="loginForm" class="content">
+
+                    <mat-form-field>
+                        <input type="email" class="emailInput" matInput placeholder="Enter Email" label="Email"
+                            formControlName="email">
+                        <mat-error
+                            *ngIf=" loginForm.controls['email'].touched && loginForm.controls['email'].errors?.['email']">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error
+                            *ngIf="loginForm.controls['email'].errors?.['required'] || !loginForm.controls['email'].touched">
+                            Email is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Enter password"
+                            label="Password" formControlName="password">
+                        <button mat-icon-button matSuffix (click)="hidePassword=!hidePassword">
+                            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error
+                            *ngIf="loginForm.controls['password'].errors?.['required'] || !loginForm.controls['password'].touched">
+                            Password is required
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- <p class="forgot-password" (click)="onForgotPassword()">Forgot Password?</p> -->
+                    <div class="forgot-password">
+                        <p [routerLink]="['forgot-password']">Forgot Password?</p>
+                        <p [routerLink]="['reset-password']">Reset Password?</p>
+                    </div>
+
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" type="submit" (click)="onLogin()">Submit</button>
+                    </mat-card-actions>
+                    <p class="signup">Don't have an account? <a [routerLink]="['sign-up']"> &nbsp;Signup</a></p>
+                </form>
+            </mat-card-content>
+
+        </mat-card>
+    </section>
+</div>
+<router-outlet #outlet="outlet"></router-outlet>
